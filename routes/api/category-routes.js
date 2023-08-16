@@ -88,6 +88,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// This route is going to edit a category that already exists.
 router.put('/:id', (req, res) => {
   Category.create({
     category_name: req.body.category_name,
@@ -99,7 +100,17 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// This route is going to edit a category that already exists.
 router.put('/:id', (req, res) => {
+  // then end point for this route is still going to be one 'id' for a category,
+  // but this time we will be using a 'PUT' route
+  //our code/system is going to be chekcing for the same thing, it is looking for a 
+  // new 'category' name in the body request that we input in Insomnia
+  // once that is found, it will make sure that the endpoint of the route is a matching id
+  // that matches with an existing category, if no existing category is found, we will return
+  // a 404 error code with the message 'no category found using this id'. 
+  // if it is found, then the action will be done and we will return the '500' code, 
+  // meaning that the name change wanted done was succesful.
   Category.update(
     {
       category_name: req.body.category_name,
