@@ -134,7 +134,15 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// our end point will be the id number of a category that we want to delete
 router.delete('/:id', (req, res) => {
+  // this route once specified is going to check for a certain category, where the id 
+  // number is already existing. If that id number is found, then it will remove/delete that
+  // category from our list of categories. If there is no id found, it will return a '404' error
+  // and the message: "No category found using this id". And will return us. If there are any 
+  // internal errors during this process it will catch those as well and return those errors to our
+  // console. If everything runs smoothly we will have a '500' code which means that our category
+  // delete was a success and we are good to go!
   Category.destroy({
     where: {
       id: req.params.id,
